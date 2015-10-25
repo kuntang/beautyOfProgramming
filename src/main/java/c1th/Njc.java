@@ -5,16 +5,9 @@ package c1th;
  * n 阶乘问题
  * q1: 二进制中最低1的位置
  * q2: 二进制中末尾0的个数
+ * 注意: 计算N!是否会溢出
  */
 public class Njc {
-
-    public static void main(String[] args) {
-        int value = jc(5);
-        System.out.println("阶乘: "+value);
-        jc();
-        lowest1position();
-    }
-
     /**
      * n的阶乘
      * @param cc 数值
@@ -62,5 +55,11 @@ public class Njc {
         return num;
     }
 
+    public static void main(String[] args) {
+        int value = jc(5);
+        System.out.println("阶乘: "+value);
+        jc();
+        lowest1position();
+    }
 
 }

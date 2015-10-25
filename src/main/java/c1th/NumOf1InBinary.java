@@ -5,20 +5,6 @@ package c1th;
  * 题目: 二进制1的个数
  */
 public class NumOf1InBinary {
-
-    public static void main(String[] args) {
-        byte v = 99;
-        System.out.println(m1(v));
-        System.out.println(m2(v));
-        System.out.println(m3(v));
-        System.out.println(m4(v));
-        System.out.println(m5(v));
-        byte a = 123;
-        byte b = 23;
-        System.out.println(m6(a,b));
-    }
-
-
     /**
      * 方法1: 取于,除法
      * @param v 值
@@ -44,7 +30,7 @@ public class NumOf1InBinary {
         int count = 0;
         while(v > 0){
             count += v & 0x01;
-            v = v >> 1;
+            v = (byte)(v >> 1);
         }
         return count;
     }
@@ -106,6 +92,32 @@ public class NumOf1InBinary {
     }
 
 
+    /**
+     * 逆转整数的二进制表示
+     * 思路:
+     * 思路：相邻两位互调位置（即一位换一位），再相邻的两位换两位，
+     * 在相邻的四位与四位互调位置，再八位与八位互调位置，最后前十六位和后十六位互换位置，完成32位整数逆转。思路与归并排序相似。
+     * @return
+     */
+    public static int m7(int x){
+        x=(x&0x55555555)<<1|(x>>1)&0x55555555;
+        x=(x&0x33333333)<<2|(x>>2)&0x33333333;
+        x=(x&0x0f0f0f0f)<<4|(x>>4)&0x0f0f0f0f;
+        x=(x&0x00ff00ff)<<8|(x>>8)&0x00ff00ff;
+        x=x<<16|x>>16;
+        return x;
+    }
 
+    public static void main(String[] args) {
+        byte v = 99;
+        System.out.println(m1(v));
+        System.out.println(m2(v));
+        System.out.println(m3(v));
+        System.out.println(m4(v));
+        System.out.println(m5(v));
+        byte a = 123;
+        byte b = 23;
+        System.out.println(m6(a,b));
+    }
 
 }
