@@ -97,7 +97,7 @@ public class NumOf1InBinary {
      * 思路:
      * 思路：相邻两位互调位置（即一位换一位），再相邻的两位换两位，
      * 在相邻的四位与四位互调位置，再八位与八位互调位置，最后前十六位和后十六位互换位置，完成32位整数逆转。思路与归并排序相似。
-     * @return
+     * @return 逆转结果
      */
     public static int m7(int x){
         x=(x&0x55555555)<<1|(x>>1)&0x55555555;
@@ -107,6 +107,20 @@ public class NumOf1InBinary {
         x=x<<16|x>>16;
         return x;
     }
+
+    /**
+     * 判断一个整数是否为2的方幂
+     * @param v 值
+     * @return 是否为2的方幂
+     */
+    public static boolean m8(int v) {
+        /**
+         * 0x10000
+         * 0x10000 & 0x01111 = 0
+         */
+        return v > 0 && (v & (v - 1)) == 0;
+    }
+
 
     public static void main(String[] args) {
         byte v = 99;
@@ -118,6 +132,8 @@ public class NumOf1InBinary {
         byte a = 123;
         byte b = 23;
         System.out.println(m6(a,b));
+        System.out.println(m7(200));
+        System.out.println(m8(122));
     }
 
 }
